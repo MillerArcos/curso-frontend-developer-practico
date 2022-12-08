@@ -1,10 +1,15 @@
 const menuEmail = document.querySelector(".navbar-email");
 const desktopMenu = document.querySelector(".desktop-menu");
 const menuMobile = document.querySelector(".menu");
-const mobileMenu = document.querySelector(".mobile-menu")
+const mobileMenu = document.querySelector(".mobile-menu");
+const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
+const orderMenu = document.querySelector(".product-detail");
+
+
+
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuMobile.addEventListener('click', toggleMobileMenu);
-
+menuCarritoIcon.addEventListener('click' , toggleOrderMenu);
 
 function toggleDesktopMenu(){
     
@@ -12,6 +17,16 @@ function toggleDesktopMenu(){
 }
 
 function toggleMobileMenu(){
-    console.log("entro");
+    
     mobileMenu.classList.toggle("inactive");
+}
+
+function toggleOrderMenu(){
+    orderMenu.classList.toggle("inactive");
+    if (!mobileMenu.classList.contains("inactive")){
+        
+    }
+    else{
+        mobileMenu
+    }
 }
