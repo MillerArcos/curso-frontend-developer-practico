@@ -11,22 +11,32 @@ menuEmail.addEventListener('click', toggleDesktopMenu);
 menuMobile.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click' , toggleOrderMenu);
 
+
+
+
 function toggleDesktopMenu(){
     
     desktopMenu.classList.toggle("inactive");
+    if(!orderMenu.classList.contains("inactive")){
+        orderMenu.classList.toggle("inactive");        
+    }
 }
 
-function toggleMobileMenu(){
-    
+function toggleMobileMenu(){    
     mobileMenu.classList.toggle("inactive");
+    if(!orderMenu.classList.contains("inactive")){        
+        orderMenu.classList.toggle("inactive");        
+    }
 }
 
 function toggleOrderMenu(){
     orderMenu.classList.toggle("inactive");
-    if (!mobileMenu.classList.contains("inactive")){
-        
+    
+    if(!mobileMenu.classList.contains("inactive")){
+        mobileMenu.classList.toggle("inactive");
     }
-    else{
-        mobileMenu
+    if(!desktopMenu.classList.contains("inactive")){
+        desktopMenu.classList.toggle("inactive");
     }
+    
 }
