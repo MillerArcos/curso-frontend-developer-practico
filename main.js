@@ -4,13 +4,14 @@ const menuMobile = document.querySelector(".menu");
 const mobileMenu = document.querySelector(".mobile-menu");
 const menuCarritoIcon = document.querySelector(".navbar-shopping-cart");
 const orderMenu = document.querySelector(".product-detail");
-
-cardContainer = document.querySelector(".cards-container");
+const cardContainer = document.querySelector(".cards-container ");
+const productDetail = document.querySelector(".productData-detail")
+const closeProductDetail = document.querySelector(".productData-detail-close");
 
 menuEmail.addEventListener('click', toggleDesktopMenu);
 menuMobile.addEventListener('click', toggleMobileMenu);
 menuCarritoIcon.addEventListener('click' , toggleOrderMenu);
-
+closeProductDetail.addEventListener("click", closeDataDetail);
 
 
 
@@ -27,6 +28,9 @@ function toggleMobileMenu(){
     if(!orderMenu.classList.contains("inactive")){        
         orderMenu.classList.toggle("inactive");        
     }
+    if (!productDetail.classList.contains("inactive")){
+        productDetail.classList.toggle("inactive");
+    }
 }
 
 function toggleOrderMenu(){
@@ -38,9 +42,24 @@ function toggleOrderMenu(){
     if(!desktopMenu.classList.contains("inactive")){
         desktopMenu.classList.toggle("inactive");
     }
+    if (!productDetail.classList.contains("inactive")){
+        productDetail.classList.toggle("inactive");
+    }
     
 }
+function  openProducDetailAside(){
+    productDetail.classList.remove("inactive");
+    if(!orderMenu.classList.contains("inactive")){
+        orderMenu.classList.toggle("inactive");
+    }
+    if(!mobileMenu.classList.contains("inactive")){
+        mobileMenu.classList.toggle("inactive");
+    }
 
+}
+function closeDataDetail(){
+    productDetail.classList.add("inactive");
+}
 
 
 const productList=[];
@@ -65,6 +84,7 @@ productList.push({
 
 renderProducts(productList);
 
+
 function renderProducts(array){
     for (const product of array) {
         const productCard = document.createElement("div");
@@ -74,8 +94,8 @@ function renderProducts(array){
          
         const img = document.createElement("img");
         img.setAttribute("src" , product.image);
-        img.setAttribute("alt", "");
         
+        img.addEventListener("click", openProducDetailAside );
     
         const productInfo = document.createElement("div");
         productInfo.classList.add("product-info");
@@ -103,6 +123,10 @@ function renderProducts(array){
         productCard.appendChild(productInfo);
     
         cardContainer.appendChild(productCard);
+        
+        
     }
-}
 
+    
+    
+}
